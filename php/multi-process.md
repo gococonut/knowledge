@@ -15,7 +15,7 @@ class ProcessUtil
         $exitedProcessCount = 0;
         while ($exitedProcessCount < $processCount) {
             $status = -1;
-            // 这里应该阻塞， 之前踩过一个坑 `$option = WNOHANG` 造成长时间 while 循环占用大量内存(http://www.php.net/manual/en/function.pcntl-wait.php)
+            // 这里应该阻塞，之前踩过一个坑 `$option = WNOHANG` 造成长时间 while 循环占用大量内存(http://www.php.net/manual/en/function.pcntl-wait.php)
             $pid = pcntl_wait($status);
             if ($pid > 0) {
                 echo("process {$pid} exit\n");
