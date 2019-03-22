@@ -1,7 +1,9 @@
-```sh
+# Mac Install Php
+
+```bash
 xcode-select --install
 
-brew install automake autoconf curl pcre bison re2c mhash libtool icu4c gettext jpeg openssl libxml2 mcrypt gmp libevent libiconv bzip2 zlib
+brew install automake autoconf curl pcre bison re2c mhash libtool icu4c gettext jpeg openssl libxml2 mcrypt gmp libevent `libiconv` `bzip2` `zlib`
 brew link icu4c
 brew link --force openssl
 brew link --force libxml2
@@ -24,3 +26,4 @@ phpbrew --debug install --stdout 7.1 +default \
     +bz2="$(brew --prefix bzip2)" \
     +zlib="$(brew --prefix zlib)"
 ```
+

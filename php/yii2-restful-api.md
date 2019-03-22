@@ -1,12 +1,12 @@
-> Yii2 实现 RESTful API， 看了几天 Yii2 的源码， 总结一下Yii2实现 RESTful API 流程.
+# Yii2 RESTful api
 
----
+> Yii2 实现 RESTful API， 看了几天 Yii2 的源码， 总结一下Yii2实现 RESTful API 流程.
 
 ## entry for the application
 
 入口文件也就是web server配置的root文件， `Yii2\backend\web\index.php`
 
-``` php
+```php
 <?php
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');
@@ -24,14 +24,13 @@ $config = yii\helpers\ArrayHelper::merge(
 );
 
 (new yii\web\Application($config))->run();
-
 ```
-入口文件的作用是: 加载各种config文件，run`yii\web\Application`， 想要探究Yii2实现RESTful API的原理接下来看一下`yii\web\Application->run()`的源代码。在`yii\base\Application`中可以找
-到`public function run()`。
+
+入口文件的作用是: 加载各种config文件，run`yii\web\Application`， 想要探究Yii2实现RESTful API的原理接下来看一下`yii\web\Application->run()`的源代码。在`yii\base\Application`中可以找 到`public function run()`。
 
 ## source code
 
-``` php
+```php
 <?php
 public function run()
 {
@@ -60,19 +59,17 @@ public function run()
 
     }
 }
-
 ```
-在`fun run()`中可以很清晰的看出yii2处理`request`的过程：
-1. trigger `EVENT_BEFORE_REQUEST`
-2. `handleRequest`
-3. trigger `EVENT_AFTER_REQUEST`
+
+在`fun run()`中可以很清晰的看出yii2处理`request`的过程： 1. trigger `EVENT_BEFORE_REQUEST` 2. `handleRequest` 3. trigger `EVENT_AFTER_REQUEST`
 
 **TODO**
-- [ ] 两个event的作用
+
+* [ ] 两个event的作用
 
 先看一下`handleRequest`的源码。
 
-``` php
+```php
 <?php
 public function handleRequest($request)
 {
@@ -104,10 +101,11 @@ public function handleRequest($request)
 
 在Yii2中，在请求到达入口文件之后，接下来就是处理请求信息：
 
-- **分析请求得到`$route`, `$params`**
- `$request->resolve()`：
+* **分析请求得到**`$route`**,** `$params`
 
-``` php
+  `$request->resolve()`：
+
+```php
     {
         $result = Yii::$app->getUrlManager()->parseRequest($this);
         if ($result !== false) {
@@ -122,10 +120,11 @@ public function handleRequest($request)
 
 > `$request->resolve`也就解释了为什么在`action`可以中`_GET()`获得`queryString`中的`params`,`_GET()`本质上就是一个`param`组成的数组。
 
-- **`runAction`**
+* `runAction`
+
   Yii2中一个API的基本结构为：
 
-``` php
+```php
     class ExampleController
     {
         public function actionIndex()
@@ -135,11 +134,12 @@ public function handleRequest($request)
         }
     }
 ```
-- **`return $response`**
+
+* `return $response`
 
 其中最为重要为`runAction`,即为Yii2中一个API的基本结构为中的`actionIndex()`
 
-``` php
+```php
 <?php
 public function runAction($route, $params = [])
 {
@@ -162,7 +162,7 @@ public function runAction($route, $params = [])
 
 ## file tree
 
-```
+```text
 ** init之后的Yii2 advanced 文件目录结 **
 
 Yii2
@@ -402,9 +402,11 @@ Yii2
 ├── yii.bat
 ├── yii_test
 └── yii_test.bat
-
 ```
+
 > 文件夹的不逐一介绍， [Yii2官方文档](http://www.yiichina.com/)有很详细的说明。
 
 ## the end
+
 本文只写了Yii2实现RESTful API的流程，还不尽详实，随时更新。
+
