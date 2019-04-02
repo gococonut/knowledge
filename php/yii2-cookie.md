@@ -27,4 +27,3 @@ $value = Yii::$app->getSecurity()->hashData($serial, $validationKey);
 最后，上面的 $value 将会作为 cookie 的新值发送给客户端。
 
 知道了 cookie 是怎么加密的，那么也很容易知道怎么去验证 cookie 的合法性了，由于 cookie 加密后的值是由 $hash 和 $serial 直接拼接而成的，那么我们只要根据 `不同算法生成的哈希值长度不一样` 这个原理，把 $hash 和 $serial 提取出来，然后使用相同的 `$validationKey` 对 $serial 做哈希，然后和 $hash 的值作比较看是否相等，如果相等的话，那么就证明这个 cookie 是合法的了。
-
