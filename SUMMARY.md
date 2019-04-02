@@ -9,4 +9,5 @@
 * [OS](os/README.md)
   * [I/O multiplexing](os/io-multiplexing.md)
   * [Brew Domain](os/brew-domain.md)
-
+* [Algorithm](algorithm/README.md)
+  * [Longest Palindromic Substring](algorithm/longest-palindromic-substring.md)
