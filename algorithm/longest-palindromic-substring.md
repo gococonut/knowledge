@@ -8,7 +8,7 @@ Given a string s, find the longest palindromic substring in s. You may assume th
 
 #### Dynamic Programming
 
-![Dynamic Programming](/images/longest-palindromic-substring-dp.png)
+![](/images/longest-palindromic-substring-dp.png)
 
 
 ```go
@@ -223,4 +223,64 @@ If we look at all four cases, we will see that we 1st set minimum of L[iMirror] 
 
 Above observation may look more intuitive, easier to understand and implement, given that one understands LPS length array, position, index, symmetry property etc.
 
-##### TODO IMPLEMENT
+```go
+package main
+
+func main() {
+	println(longestPalindrome("1112234"))
+}
+
+// Manacher’s Algorithm
+func longestPalindrome(s string) string {
+	if len(s) < 2 {
+		return s
+	}
+
+	var (
+		LPSLengths           []int
+		center               int
+		centerRightPosition  int
+		maxLPSLength         int
+		maxLPSCenterPosition int
+	)
+
+	runes := []rune(s)
+	n := 2*len(runes) + 1
+	for i := 0; i < n; i++ {
+		iLeftMirror := 2*center - i
+		LPSLengths = append(LPSLengths, 0)
+		if centerRightPosition-i > 0 {
+			// Case 1: i-left palindrome is completely contained in center palindrome
+			//         i-left palindrome is NOT a prefix of center palindrome
+			// Case 2: i-left palindrome is prefix of center palindrome (means completely contained also)
+			//         center palindrome is suffix of input string
+			LPSLengths[i] = LPSLengths[iLeftMirror]
+			// Case 4: when i-left palindrome is NOT completely contained in center palindrome,
+			//         L[currentRightPosition] > = centerRightPosition – currentRightPosition applies
+			if LPSLengths[iLeftMirror] > centerRightPosition-i {
+				LPSLengths[i] = centerRightPosition - i
+			}
+		}
+
+		for (i+LPSLengths[i]) < n-1 && (i-LPSLengths[i]) > 0 &&
+			((i+LPSLengths[i]+1)%2 == 0 || (runes[(i+LPSLengths[i]+1)/2] == runes[(i-LPSLengths[i]-1)/2])) {
+			LPSLengths[i]++
+		}
+
+		if LPSLengths[i] > maxLPSLength {
+			maxLPSLength = LPSLengths[i]
+			maxLPSCenterPosition = i
+		}
+
+		if i+LPSLengths[i] > centerRightPosition {
+			center = i
+			centerRightPosition = i + LPSLengths[i]
+		}
+	}
+
+	start := (maxLPSCenterPosition - maxLPSLength) / 2
+	end := start + maxLPSLength
+
+	return string(runes[start:end])
+}
+```
