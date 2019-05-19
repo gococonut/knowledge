@@ -12,3 +12,4 @@
   * [Yii2 Cookie](php/yii2-cookie.md)
   * [PHP Multi Process](php/multi-process.md)
   * [PHP Helpers](php/helpers.md)
+  * [PHP Restier Supergloabl](php/register-superglobal.md)
