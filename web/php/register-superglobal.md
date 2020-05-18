@@ -1,6 +1,6 @@
-# PHP 如何处理 query string 中的数组
+# PHP Register Superglobal
 
-> 请求 domain/path?a[]=1&a[index]=2
+> 请求 domain/path?a\[\]=1&a\[index\]=2
 
 ```php
     <?php
@@ -12,12 +12,12 @@
 
 ## 初始化变量 PHP 源码函数调用
 
-- php_request_startup (main.c)
-- php_hash_environment
-- treat_data(php_register_variable_safe)
-- php_regisger_variable_ex (php_variables.c)
+* php\_request\_startup \(main.c\)
+* php\_hash\_environment
+* treat\_data\(php\_register\_variable\_safe\)
+* php\_regisger\_variable\_ex \(php\_variables.c\)
 
-对于 query string 、form-data 、x-www-form-urlencoded 数组类型的处理，相关代码 php_register_variable_ex in php_variables.c
+对于 query string 、form-data 、x-www-form-urlencoded 数组类型的处理，相关代码 php\_register\_variable\_ex in php\_variables.c
 
 ```c
     PHPAPI void php_register_variable_ex(char *var_name, zval *val, zval *track_vars_array)
@@ -141,3 +141,4 @@ PHP 源码处理超全局变量的函数
         zend_register_auto_global(zend_string_init_interned("_FILES", sizeof("_FILES")-1, 1), 0, php_auto_globals_create_files);
     }
 ```
+

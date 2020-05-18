@@ -1,15 +1,14 @@
-## 世界地图
+# Map Projections
 
-- 因有项目需要根据经纬度在世界地图标点，了解了一下世界地图的投影方式，总结如下:
+* 因有项目需要根据经纬度在世界地图标点，了解了一下世界地图的投影方式，总结如下:
 
-### [常用世界地图](https://en.wikipedia.org/wiki/List_of_map_projections)
+## [常用世界地图](https://en.wikipedia.org/wiki/List_of_map_projections)
 
-- [Equirectangular projection 等距圆柱投影](https://en.wikipedia.org/wiki/Equirectangular_projection)
+* [Equirectangular projection 等距圆柱投影](https://en.wikipedia.org/wiki/Equirectangular_projection)
 
 地图上的距离与经纬度的差值成比例，所以可以通过简单的线性计算得到世界地图的坐标
 
-- [Gall Stereographic Gall 立体投影](https://en.wikipedia.org/wiki/Gall_stereographic_projection)
-
+* [Gall Stereographic Gall 立体投影](https://en.wikipedia.org/wiki/Gall_stereographic_projection)
 
 ```php
     /**
@@ -35,3 +34,4 @@
         return [$x, $y];
     }
 ```
+

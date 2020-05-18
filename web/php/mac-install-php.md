@@ -26,3 +26,4 @@ phpbrew --debug install --stdout 7.1 +default \
     +bz2="$(brew --prefix bzip2)" \
     +zlib="$(brew --prefix zlib)"
 ```
+

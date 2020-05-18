@@ -1,4 +1,4 @@
-### Image Helper
+# PHP Helpers
 
 ```php
 <?php
@@ -193,3 +193,4 @@ class ImageHelper
     }
 }
 ```
+
