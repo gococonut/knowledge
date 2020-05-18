@@ -1,4 +1,4 @@
-# PHP foreach
+# PHP Foreach
 
 遍历过程需解决 **array/object** 被修改导致的 **悬挂指针** \(dangling pointer\) 问题。
 

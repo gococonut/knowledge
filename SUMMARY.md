@@ -21,7 +21,7 @@
     * [PHP Helpers](web/php/helpers.md)
     * [PHP Register Superglobal](web/php/register-superglobal.md)
     * [PHP Reference](web/php/php-reference.md)
-    * [PHP foreach](web/php/php-foreach.md)
+    * [PHP Foreach](web/php/php-foreach.md)
   * [Docker](web/docker/README.md)
     * [Docker command](web/docker/docker-command.md)
 
