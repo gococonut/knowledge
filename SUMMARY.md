@@ -20,8 +20,8 @@
     * [PHP Multi Process](web/php/multi-process.md)
     * [PHP Helpers](web/php/helpers.md)
     * [PHP Register Superglobal](web/php/register-superglobal.md)
-    * [PHP foreach](web/php/php-foreach/README.md)
-      * [PHP Reference](web/php/php-foreach/php-reference.md)
+    * [PHP Reference](web/php/php-reference.md)
+    * [PHP foreach](web/php/php-foreach.md)
   * [Docker](web/docker/README.md)
     * [Docker command](web/docker/docker-command.md)
 

@@ -32,7 +32,7 @@ while (get_current_data(arr, &data) == SUCCESS) {
 
   **IAP** 对应 PHP5 **HashTable** 中的 **pInternalPointer**，用以表示数组当前的遍历元素的位置，每当删除元素时，都会检查 IAP 是否指向该元素。如果是这样，它将前进到下一个元素。
 
-![](../../../.gitbook/assets/screen-shot-2018-04-09-at-10.58.241.png)
+![](../../.gitbook/assets/screen-shot-2018-04-09-at-10.58.241.png)
 
 **哈希指针** 在循环主体之前将指向当前元素的指针以及 **hash** 值备份到 每个 foreach 的 **Hash Pointer**中。在循环主体之后，如果 **IAP** 仍存在，则将 **IAP** 设置回该元素，如果该元素已删除，将仅使用 **IAP** 当前所在的位置进而解决了只有一个 **IAP** 支持多层遍历的问题。
 
@@ -66,7 +66,7 @@ foreach ($array as $val) { // refcount 为 2
 
 zend\_array 组织图：
 
-![](../../../.gitbook/assets/2bc2574f-b586-4060-be10-bffa6e1f65ff.jpg)
+![](../../.gitbook/assets/2bc2574f-b586-4060-be10-bffa6e1f65ff.jpg)
 
 zend\_array 定义：
 
